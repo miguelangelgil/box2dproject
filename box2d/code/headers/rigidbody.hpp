@@ -9,7 +9,7 @@ private:
     
 
 public:
-    RigidBody(body_kind my_body_kind, position_2d position, size_2d size, float density,float friction );
+    RigidBody(body_kind my_body_kind, position_2d position, size_2d size, float density,float friction, float rotation = 0.0f);
 
 
 };

@@ -24,6 +24,6 @@ public:
     Scene();
     void update();
     void draw();
-    void add_entity();
-    void delete_entity();
+    void add_entity(Entity entity);
+
 };

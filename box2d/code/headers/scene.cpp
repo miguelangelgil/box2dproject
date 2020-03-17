@@ -16,6 +16,8 @@ void Scene::draw()
     }
 }
 
-void Scene::add_entity()
+void Scene::add_entity(Entity entity)
 {
+    my_entities.push_back(entity);
 }
+
