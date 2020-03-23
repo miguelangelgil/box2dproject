@@ -1,4 +1,7 @@
+#include <memory>
+#include <vector>
 #include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
 #include <iostream>
 
 using namespace std;
@@ -10,10 +13,7 @@ static const size_t window_height = 600;
 int main() 
 {
     // Create the window and the view that will be shown within the window:
-
-    Window window(VideoMode(window_width, window_height), "Image Loader", Style::Titlebar | Style::Close, ContextSettings(32));
-
-    // Initialization:
+    RenderWindow window(VideoMode(800, 600), "Animation Box2D (MAGMA)", Style::Titlebar | Style::Close, ContextSettings(32));
 
     window.setVerticalSyncEnabled(true);
 

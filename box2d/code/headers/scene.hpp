@@ -1,6 +1,7 @@
 #pragma once
 #include <box2d.h>
 #include "entity.hpp"
+
 class Scene 
 {
 private:
@@ -21,7 +22,8 @@ public:
         b2World world;
     };
 
-    Scene();
+    Scene() = default;
+    Scene(Entity entity);
     void update();
     void draw();
     void add_entity(Entity entity);

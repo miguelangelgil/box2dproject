@@ -7,7 +7,7 @@ class Entity
     RigidBody* my_rigidbody;
     Mesh* my_mesh;
 public:
-    Entity();
+    Entity(RigidBody & rigidbody, Mesh & mesh);
     void update();
     void draw();
 
