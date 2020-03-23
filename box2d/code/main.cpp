@@ -2,6 +2,10 @@
 #include <vector>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
+#include "headers/rigidbody.hpp"
+#include "headers/mesh.hpp"
+#include "headers/scene.hpp"
+#include "headers/entity.hpp"
 #include <iostream>
 
 using namespace std;
@@ -14,6 +18,11 @@ int main()
 {
     // Create the window and the view that will be shown within the window:
     RenderWindow window(VideoMode(800, 600), "Animation Box2D (MAGMA)", Style::Titlebar | Style::Close, ContextSettings(32));
+    Scene my_scene;
+    RigidBody rigidbody(body_kind::DYNAMIC, position_2d{ 0.f,0.f }, size_2d{1.f,1.f}, 1.f, 1.f);
+    Mesh mesh();
+    Entity my_entity();
+
 
     window.setVerticalSyncEnabled(true);
 
