@@ -5,6 +5,7 @@
 #include "scene.hpp"
 #include <SFML/Graphics.hpp>
 using namespace sf;
+class Scene;
 class RigidBody 
 {
 private:

@@ -2,6 +2,8 @@
 #include<iostream>
 #include "rigidbody.hpp"
 #include "mesh.hpp"
+
+class RigidBody;
 class Entity 
 {
 private:

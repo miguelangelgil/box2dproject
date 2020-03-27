@@ -1,10 +1,12 @@
 #pragma once
 #include <memory>
 #include <iostream>
+#include <vector>
 #include <box2d.h>
 #include "entity.hpp"
 
 using namespace std;
+class Entity;
 class Scene 
 {
 private:

@@ -29,19 +29,21 @@ Scene::Scene(Entity & entity, b2Vec2 gravity):
 
 void Scene::update()
 {
-    for (auto&& entity : my_entities) 
-    {
-        entity->update();
+    if(my_entities.size())
+        for (auto&& entity : my_entities) 
+        {
+            entity->update();
 
-    }
+        }
 }
 
 void Scene::draw()
 {
-    for (auto&& entity : my_entities) 
-    {
-        entity->draw();
-    }
+    if(my_entities.size())
+        for (auto&& entity : my_entities) 
+        {
+            entity->draw();
+        }
 }
 
 void Scene::add_entity(Entity & entity)
