@@ -5,7 +5,6 @@
 #include "entity.hpp"
 
 using namespace std;
-
 class Scene 
 {
 private:
@@ -15,22 +14,23 @@ private:
     int32 velocityIterations = 6;
     int32 positionIterations = 2;
 
-    std::vector<Entity> my_entities;
+    vector<Entity *> my_entities;
+    shared_ptr< b2World > physics_world;
 
 public:
     static Scene &reference;
 public:
 
-    struct World 
-    {
-        b2Vec2 gravity;
-        shared_ptr< b2World > world;
-    };
-
     Scene();
-    Scene(Entity entity);
+    Scene(Entity &entity);
+    Scene(b2Vec2 gravity);
+    Scene(Entity &entity, b2Vec2 gravity);
     void update();
     void draw();
-    void add_entity(Entity entity);
+    void add_entity(Entity& entity);
+    shared_ptr<b2World> get_world() 
+    {
+        return physics_world;
+    }
 
 };

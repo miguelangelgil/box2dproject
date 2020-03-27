@@ -19,11 +19,11 @@ int main()
     // Create the window and the view that will be shown within the window:
     RenderWindow window(VideoMode(800, 600), "Animation Box2D (MAGMA)", Style::Titlebar | Style::Close, ContextSettings(32));
     Scene my_scene;
-    RigidBody rigidbody(Body_kind::DYNAMIC, Vector2f{ 0.f,0.f }, Vector2f{1.f,1.f}, 1.f, 1.f);
-    CircleShape circle(100);
-    Mesh mesh(circle);
-    Entity my_entity(rigidbody,mesh);
-    my_scene.add_entity(my_entity);
+    //RigidBody rigidbody(my_scene,Body_kind::DYNAMIC, Vector2f{ 0.f,0.f }, Vector2f{1.f,1.f}, 1.f, 1.f);
+    //CircleShape circle(100);
+    //Mesh mesh(circle);
+    //Entity my_entity(rigidbody,mesh);
+    //my_scene.add_entity(my_entity);
 
 
     window.setVerticalSyncEnabled(true);

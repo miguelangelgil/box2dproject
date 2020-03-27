@@ -4,8 +4,11 @@
 #include "mesh.hpp"
 class Entity 
 {
+private:
+
     RigidBody* my_rigidbody;
     Mesh* my_mesh;
+
 public:
     Entity(RigidBody & rigidbody, Mesh & mesh);
     void update();
