@@ -2,6 +2,8 @@
 #include<iostream>
 #include <box2d.h>
 #include "values.hpp"
+#include <SFML/Graphics.hpp>
+using namespace sf;
 class RigidBody 
 {
 private:
@@ -9,7 +11,7 @@ private:
     
 
 public:
-    RigidBody(body_kind my_body_kind, position_2d position, size_2d size, float density,float friction, float rotation = 0.0f);
+    RigidBody(Body_kind my_body_kind, Vector2f position, Vector2f size, float density,float friction, float rotation = 0.0f);
 
 
 };

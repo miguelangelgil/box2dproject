@@ -87,6 +87,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\code\headers\entity.cpp" />
+    <ClCompile Include="..\..\code\headers\mesh.cpp" />
     <ClCompile Include="..\..\code\headers\rigidbody.cpp" />
     <ClCompile Include="..\..\code\headers\scene.cpp" />
     <ClCompile Include="..\..\code\main.cpp" />

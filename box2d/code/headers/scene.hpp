@@ -1,6 +1,10 @@
 #pragma once
+#include <memory>
+#include <iostream>
 #include <box2d.h>
 #include "entity.hpp"
+
+using namespace std;
 
 class Scene 
 {
@@ -13,16 +17,17 @@ private:
 
     std::vector<Entity> my_entities;
 
-
+public:
+    static Scene &reference;
 public:
 
     struct World 
     {
         b2Vec2 gravity;
-        b2World world;
+        shared_ptr< b2World > world;
     };
 
-    Scene() = default;
+    Scene();
     Scene(Entity entity);
     void update();
     void draw();
