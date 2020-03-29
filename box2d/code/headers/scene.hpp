@@ -27,7 +27,7 @@ public:
     Scene(Entity &entity);
     Scene(b2Vec2 gravity);
     Scene(Entity &entity, b2Vec2 gravity);
-    void update();
+    void update(RenderWindow & window);
     void draw(RenderWindow & window);
     void add_entity(Entity & entity);
     shared_ptr<b2World> get_world() 

@@ -1,12 +1,12 @@
 #include "scene.hpp"
 
 Scene::Scene() :
-    physics_world(new b2World(b2Vec2(0,9.8f)))
+    physics_world(new b2World(b2Vec2(0,-9.8f)))
 {
 }
 
 Scene::Scene(Entity & entity):
-    physics_world(new b2World(b2Vec2(0, 9.8f)))
+    physics_world(new b2World(b2Vec2(0,-9.8f)))
 {
     my_entities.push_back(&entity);
 }
@@ -22,11 +22,11 @@ Scene::Scene(Entity & entity, b2Vec2 gravity):
     my_entities.push_back(&entity);
 }
 
-void Scene::update()
+void Scene::update(RenderWindow& window)
 {
     for (auto&& entity : my_entities) 
     {
-        entity->update();
+        entity->update(window);
 
     }
 }

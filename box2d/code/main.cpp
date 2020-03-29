@@ -53,7 +53,7 @@ int main()
         // Swap the OpenGL buffers
        // my_scene.update(window);
         my_scene.get_world()->Step(delta_time, 8, 4);
-        my_scene.update();
+        my_scene.update(window);
         my_scene.draw(window);
 
         window.display();
