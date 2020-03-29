@@ -1,49 +1,42 @@
 #include "scene.hpp"
 
 Scene::Scene() :
-    physics_world(new b2World(b2Vec2(0,-8.9f)))
+    physics_world(new b2World(b2Vec2(0,9.8f)))
 {
-    reference = *this;
-
 }
 
 Scene::Scene(Entity & entity):
-    physics_world(new b2World(b2Vec2(0, -8.9f)))
+    physics_world(new b2World(b2Vec2(0, 9.8f)))
 {
     my_entities.push_back(&entity);
-    reference = *this;
 }
 
 Scene::Scene(b2Vec2 gravity):
     physics_world(new b2World(gravity))
 {
-    reference = *this;
 }
 
 Scene::Scene(Entity & entity, b2Vec2 gravity):
     physics_world(new b2World(gravity))
 {
     my_entities.push_back(&entity);
-    reference = *this;
 }
 
 void Scene::update()
 {
-    if(my_entities.size())
-        for (auto&& entity : my_entities) 
-        {
-            entity->update();
+    for (auto&& entity : my_entities) 
+    {
+        entity->update();
 
-        }
+    }
 }
 
-void Scene::draw()
+void Scene::draw(RenderWindow & window)
 {
-    if(my_entities.size())
-        for (auto&& entity : my_entities) 
-        {
-            entity->draw();
-        }
+    for (auto&& entity : my_entities) 
+    {
+        entity->draw(window);
+    }
 }
 
 void Scene::add_entity(Entity & entity)

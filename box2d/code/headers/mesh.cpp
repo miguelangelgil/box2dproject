@@ -6,6 +6,12 @@ Mesh::Mesh(Shape & shape):
 {
 }
 
+Mesh::~Mesh()
+{
+    delete &my_shape;
+    delete &relative_position;
+}
+
 void Mesh::set_relative_position(Vector2f position)
 {
     relative_position = position;

@@ -1,0 +1,5 @@
+﻿1>------ Build started: Project: box2d, Configuration: Debug x64 ------
+1>entity.obj : error LNK2001: unresolved external symbol "public: static class sf::RenderStates const sf::RenderStates::Default" (?Default@RenderStates@sf@@2V12@B)
+1>C:\repos\box2dproyect\box2d\projects\vs-2019\x64\Debug\box2d.exe : fatal error LNK1120: 1 unresolved externals
+1>Done building project "box2d.vcxproj" -- FAILED.
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========

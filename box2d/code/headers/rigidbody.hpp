@@ -9,12 +9,18 @@ class Scene;
 class RigidBody 
 {
 private:
-    b2Body* my_body;
+    b2Body* my_body; 
     b2BodyDef body_definition;
     
 
 public:
-    RigidBody(Scene & scene ,Body_kind my_body_kind, Vector2f position, Vector2f size, float density,float friction, float rotation = 0.0f);
+    RigidBody(
+        Scene & scene ,Body_kind my_body_kind, Vector2f position,
+        Vector2f size, float density,float friction, float rotation = 0.0f, int vertex = 0);
+
+    ~RigidBody() = default;
+
+    b2Body* get_body();
 
 
 };

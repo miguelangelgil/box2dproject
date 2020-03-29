@@ -4,8 +4,11 @@
 #include <vector>
 #include <box2d.h>
 #include "entity.hpp"
+#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
 
 using namespace std;
+using namespace sf;
 class Entity;
 class Scene 
 {
@@ -18,9 +21,6 @@ private:
 
     vector<Entity *> my_entities;
     shared_ptr< b2World > physics_world;
-
-public:
-    static Scene &reference;
 public:
 
     Scene();
@@ -28,8 +28,8 @@ public:
     Scene(b2Vec2 gravity);
     Scene(Entity &entity, b2Vec2 gravity);
     void update();
-    void draw();
-    void add_entity(Entity& entity);
+    void draw(RenderWindow & window);
+    void add_entity(Entity & entity);
     shared_ptr<b2World> get_world() 
     {
         return physics_world;
