@@ -12,7 +12,6 @@ private:
 
 public:
     Mesh(Shape & shape);
-    ~Mesh();
     void set_relative_position(Vector2f position);
     Vector2f get_relative_position();
     void set_color(const Color& color);

@@ -1,4 +1,4 @@
-#include <memory>
+
 #include <vector>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
@@ -19,12 +19,26 @@ int main()
     // Create the window and the view that will be shown within the window:
     RenderWindow window(VideoMode(800, 600), "Animation Box2D (MAGMA)", Style::Titlebar | Style::Close, ContextSettings(32));
     Scene my_scene;
-    RigidBody rigidbody(my_scene,Body_kind::DYNAMIC, Vector2f{ 200.f,200.f }, Vector2f{10.f,10.f}, 1.f, 1.f);
-    CircleShape circle(100);
+
+    RigidBody rigidbodycircle(my_scene,Body_kind::DYNAMIC, Vector2f{ 100.f,200.f }, 10.f, 0.1f, 1.f);
+    RigidBody rigidbodyground(my_scene,Body_kind::STATIC,Vector2f(0.f,20.f), Vector2f(450.f,5.f),0.1f,1.f);
+
+    CircleShape circle(10);
+    RectangleShape rectangle(Vector2f(450.f,5.f));
+    rectangle.setPosition(0.f, 20.f);
+    circle.setPosition(100.f, 200.f);
+
+    rectangle.setFillColor(Color::Red);
     circle.setFillColor(Color::Blue);
+
     Mesh mesh(circle);
-    Entity my_entity(rigidbody,mesh);
+    Mesh ground_mesh(rectangle);
+
+    Entity my_entity(rigidbodycircle,mesh);
+    Entity my_ground(rigidbodyground, ground_mesh);
+
     my_scene.add_entity(my_entity);
+    my_scene.add_entity(my_ground);
 
     Clock timer;
     float delta_time = 0.017f;;

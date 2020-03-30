@@ -22,6 +22,14 @@ Scene::Scene(Entity & entity, b2Vec2 gravity):
     my_entities.push_back(&entity);
 }
 
+Scene::~Scene()
+{
+    for (auto&& entity : my_entities) 
+    {
+        physics_world->DestroyBody(entity->get_body()->get_body());
+    }
+}
+
 void Scene::update(RenderWindow& window)
 {
     for (auto&& entity : my_entities) 

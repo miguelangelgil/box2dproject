@@ -12,12 +12,12 @@ private:
 
     RigidBody* my_rigidbody;
     Mesh* my_mesh;
-
 public:
     Entity(RigidBody & rigidbody, Mesh & mesh);
-    ~Entity();
     void update(RenderWindow& window);
     void draw(RenderWindow & window);
+    RigidBody* get_body();
+  
 private:
 
     /** En Box2D las coordenadas Y crecen hacia arriba y en SFML crecen hacia abajo desde el borde superior.
