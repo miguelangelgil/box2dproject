@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include <vector>
 #include "rigidbody.hpp"
 #include "mesh.hpp"
 #include <SFML/Window.hpp>
@@ -10,13 +11,14 @@ class Entity
 {
 private:
 
-    RigidBody* my_rigidbody;
-    Mesh* my_mesh;
+    vector<RigidBody*> my_rigidbody;
+    vector<Mesh*> my_mesh;
+    vector<b2RevoluteJoint> joints;
 public:
     Entity(RigidBody & rigidbody, Mesh & mesh);
-    void update(RenderWindow& window);
-    void draw(RenderWindow & window);
-    RigidBody* get_body();
+    void update(RenderWindow& window, bool set_position = false);
+    RigidBody* get_body(int index);
+    void add_body(RigidBody & rigidbody, Mesh & mesh, Scene & scene);
   
 private:
 

@@ -30,20 +30,19 @@ Scene::~Scene()
     }
 }
 
+void Scene::set_positions(RenderWindow& window)
+{
+    for (auto&& entity : my_entities)
+    {
+        entity->update(window, true);
+    }
+}
+
 void Scene::update(RenderWindow& window)
 {
     for (auto&& entity : my_entities) 
     {
         entity->update(window);
-
-    }
-}
-
-void Scene::draw(RenderWindow & window)
-{
-    for (auto&& entity : my_entities) 
-    {
-        entity->draw(window);
     }
 }
 

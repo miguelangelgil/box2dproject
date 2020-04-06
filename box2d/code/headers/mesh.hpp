@@ -7,14 +7,13 @@ using namespace sf;
 class Mesh
 {
 private:
-    std::shared_ptr<sf::Shape> my_shape;
+    Color color;
     Vector2f relative_position;
-
 public:
-    Mesh(Shape & shape);
+    Mesh(Color color);
     void set_relative_position(Vector2f position);
     Vector2f get_relative_position();
     void set_color(const Color& color);
-    Shape& get_shape();
+    Color get_color();
 
 };

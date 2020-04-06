@@ -1,15 +1,15 @@
 #include "mesh.hpp"
 
 
-Mesh::Mesh(Shape & shape):
-    my_shape(&shape)
+Mesh::Mesh(Color color):
+    color(color),
+    relative_position(0.0f,0.0f)
 {
 }
 
 void Mesh::set_relative_position(Vector2f position)
 {
     relative_position = position;
-    my_shape->setPosition(relative_position);
 }
 
 Vector2f Mesh::get_relative_position()
@@ -19,10 +19,10 @@ Vector2f Mesh::get_relative_position()
 
 void Mesh::set_color(const Color& color)
 {
-    my_shape->setFillColor(color);
+    this->color = color;
 }
 
-Shape& Mesh::get_shape()
+Color Mesh::get_color()
 {
-    return *my_shape;
+    return color;
 }
