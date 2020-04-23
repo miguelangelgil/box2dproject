@@ -20,7 +20,7 @@ private:
     int32 positionIterations = 2;
 
     vector<Entity *> my_entities;
-    shared_ptr< b2World > physics_world;
+    unique_ptr< b2World > physics_world;
 public:
 
     Scene();
@@ -28,12 +28,12 @@ public:
     Scene(b2Vec2 gravity);
     Scene(Entity &entity, b2Vec2 gravity);
     ~Scene();
-    void set_positions(RenderWindow& window);
-    void update(RenderWindow & window);
+    void update();
+    void draw();
     void add_entity(Entity & entity);
-    shared_ptr<b2World> get_world() 
+    b2World& get_world() 
     {
-        return physics_world;
+        return *physics_world;
     }
 
 };

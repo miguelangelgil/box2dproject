@@ -1,4 +1,5 @@
 
+#include <box2d.h>
 #include <vector>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
@@ -7,6 +8,7 @@
 #include "headers/scene.hpp"
 #include "headers/entity.hpp"
 #include <iostream>
+#include <box2d.h>
 
 using namespace std;
 using namespace sf;
@@ -18,36 +20,33 @@ int main()
 {
     // Create the window and the view that will be shown within the window:
     RenderWindow window(VideoMode(800, 600), "Animation Box2D (MAGMA)", Style::Titlebar | Style::Close, ContextSettings(32));
-    Scene my_scene;
+    Scene my_scene(b2Vec2(0.f,-9.8f));
 
-    RigidBody rigidbodycircle(my_scene,Body_kind::DYNAMIC, Vector2f{ 100.f,200.f }, 10.f, 0.1f, 1.f);
-    RigidBody rigidbodyground(my_scene, window, Body_kind::STATIC,Vector2f(0.f,20.f), 0.0f);
-    RigidBody rigidbodybox(my_scene,Body_kind::DYNAMIC,Vector2f(120.f,600.f), Vector2f(50.f,50.f),0.1f,1.f);
+    RigidBody rigidground(my_scene,Body_kind::STATIC,Vector2f(120.f,300.f), Vector2f(100.f,10.f),200.f,0.3f);
 
- /*   CircleShape circle(10);
-    RectangleShape rectangle(Vector2f(450.f,5.f));
-    RectangleShape box(Vector2f(50.f, 50.f));
+    RigidBody rigidbodybox(my_scene,Body_kind::DYNAMIC,Vector2f(120.f,500.f), Vector2f(50.f,15.f),50.f,0.3f);
+    RigidBody rueda1(my_scene, Body_kind::DYNAMIC, Vector2f(120.f, 500.f), 17.f, 1.f, 0.6f);
+    RigidBody rueda2(my_scene, Body_kind::DYNAMIC, Vector2f(120.f, 500.f), 17.f, 1.f, 0.6f);
 
-    rectangle.setFillColor(Color::Red);
-    circle.setFillColor(Color::Blue);
-    box.setFillColor(Color::Green);*/
+   
 
-    Mesh mesh(Color::Blue);
-    Mesh ground_mesh(Color::Red);
-    Mesh box_mesh(Color::Green);
+    Mesh ground_mesh(window, Color::Red);
+    Mesh box_mesh(window ,Color::Green);
+    Mesh ruedas1_mesh(window, Color::Cyan);
+    Mesh ruedas2_mesh(window, Color::Cyan);
 
-    Entity my_entity(rigidbodycircle,mesh);
-    Entity my_ground(rigidbodyground, ground_mesh);
+   
+    Entity my_ground(rigidground, ground_mesh);
     Entity my_box(rigidbodybox, box_mesh);
+    my_box.add_body(rueda1, ruedas1_mesh, my_scene, b2Vec2(-40.f,-40.f), b2Vec2(0.f, 0.f));
+    my_box.add_body(rueda2, ruedas2_mesh, my_scene, b2Vec2(40.f, -40.f), b2Vec2(0.f, 0.f));
 
-    my_scene.add_entity(my_entity);
-    my_scene.add_entity(my_ground);
+   
     my_scene.add_entity(my_box);
-
-    my_scene.set_positions(window);
-
+    my_scene.add_entity(my_ground);
+  
     Clock timer;
-    float delta_time = 0.017f;;
+    float delta_time = 0.017f;
 
 
     window.setVerticalSyncEnabled(true);
@@ -72,16 +71,18 @@ int main()
 
         // Swap the OpenGL buffers
        // my_scene.update(window);
-        my_scene.get_world()->Step(delta_time, 8, 4);
-        my_scene.update(window);
-
+        my_scene.get_world().Step(delta_time, 8, 4);
+        window.clear();
+        my_scene.update();
+        my_scene.draw();
         window.display();
 
         delta_time = (delta_time + timer.getElapsedTime().asSeconds()) * 0.5f;
-        window.clear();
+        //my_scene.get_world().ClearForces();
+        
     } while (running);
 
     // Close the application:
 
-    return (EXIT_SUCCESS);
+    return 0;
 }

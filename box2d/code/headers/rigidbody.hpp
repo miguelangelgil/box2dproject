@@ -10,9 +10,10 @@ class RigidBody
 {
 private:
     b2Body* my_body; 
-    b2BodyDef body_definition;
     Vector2f relative_position;
-    
+    b2Fixture* my_fixture;
+    RenderWindow* window;
+    Scene* scene;
 
 public:
     RigidBody(
@@ -27,6 +28,7 @@ public:
 
     ~RigidBody() = default;
 
-    b2Body* get_body();
+    b2Body* get_body() { return my_body; }
+    b2Fixture* get_fixture() { return my_fixture; }
 
 };

@@ -10,6 +10,20 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\code\headers\entity.hpp" />
+    <ClInclude Include="..\..\code\headers\mesh.hpp" />
+    <ClInclude Include="..\..\code\headers\rigidbody.hpp" />
+    <ClInclude Include="..\..\code\headers\scene.hpp" />
+    <ClInclude Include="..\..\code\headers\values.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\code\entity.cpp" />
+    <ClCompile Include="..\..\code\main.cpp" />
+    <ClCompile Include="..\..\code\mesh.cpp" />
+    <ClCompile Include="..\..\code\rigidbody.cpp" />
+    <ClCompile Include="..\..\code\scene.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{11B2798C-4018-4A7C-A420-374D0B379D30}</ProjectGuid>
@@ -85,20 +99,6 @@
       <AdditionalDependencies>winmm.lib;opengl32.lib;flac.lib;freetype.lib;ogg.lib;openal32.lib;sfml-audio-s.lib;sfml-graphics-s.lib;sfml-main.lib;sfml-network-s.lib;sfml-system-s.lib;sfml-window-s.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;box2d_Release.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\code\headers\entity.cpp" />
-    <ClCompile Include="..\..\code\headers\mesh.cpp" />
-    <ClCompile Include="..\..\code\headers\rigidbody.cpp" />
-    <ClCompile Include="..\..\code\headers\scene.cpp" />
-    <ClCompile Include="..\..\code\main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\code\headers\entity.hpp" />
-    <ClInclude Include="..\..\code\headers\rigidbody.hpp" />
-    <ClInclude Include="..\..\code\headers\scene.hpp" />
-    <ClInclude Include="..\..\code\headers\mesh.hpp" />
-    <ClInclude Include="..\..\code\headers\values.hpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

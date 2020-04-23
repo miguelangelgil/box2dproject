@@ -1,4 +1,4 @@
-#include "scene.hpp"
+#include "headers/scene.hpp"
 
 Scene::Scene() :
     physics_world(new b2World(b2Vec2(0,-9.8f)))
@@ -26,23 +26,27 @@ Scene::~Scene()
 {
     for (auto&& entity : my_entities) 
     {
-        physics_world->DestroyBody(entity->get_body()->get_body());
+        for(int i=0;i < entity->get_bodies().size();i++)
+        {
+            physics_world->DestroyBody(entity->get_body(i)->get_body());
+        }
+        
     }
 }
 
-void Scene::set_positions(RenderWindow& window)
-{
-    for (auto&& entity : my_entities)
-    {
-        entity->update(window, true);
-    }
-}
-
-void Scene::update(RenderWindow& window)
+void Scene::update()
 {
     for (auto&& entity : my_entities) 
     {
-        entity->update(window);
+        entity->update();
+    }
+}
+
+void Scene::draw()
+{
+    for (auto&& entity : my_entities) 
+    {
+        entity->draw();
     }
 }
 

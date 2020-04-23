@@ -3,31 +3,27 @@
 #include <vector>
 #include "rigidbody.hpp"
 #include "mesh.hpp"
+#include "scene.hpp"
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
+using namespace std;
+class Scene;
 class RigidBody;
+class Mesh;
 class Entity 
 {
 private:
 
-    vector<RigidBody*> my_rigidbody;
-    vector<Mesh*> my_mesh;
-    vector<b2RevoluteJoint> joints;
+    vector <RigidBody*>        my_rigidbody;
+    vector <Mesh*>             my_mesh;
 public:
     Entity(RigidBody & rigidbody, Mesh & mesh);
-    void update(RenderWindow& window, bool set_position = false);
+    void update();
+    void draw();
     RigidBody* get_body(int index);
+    vector<RigidBody*> get_bodies();
+    void add_body(RigidBody & rigidbody, Mesh & mesh, Scene & scene, b2Vec2 anchorA, b2Vec2 anchorB);
     void add_body(RigidBody & rigidbody, Mesh & mesh, Scene & scene);
-  
-private:
-
-    /** En Box2D las coordenadas Y crecen hacia arriba y en SFML crecen hacia abajo desde el borde superior.
-     ** Esta función se encarga de convertir el sistema de coordenadas para que la escena no se vea invertida.
-     **/
-    Vector2f box2d_position_to_sfml_position(const b2Vec2& box2d_position, float window_height)
-    {
-        return Vector2f(box2d_position.x, window_height - box2d_position.y);
-    }
 
 };

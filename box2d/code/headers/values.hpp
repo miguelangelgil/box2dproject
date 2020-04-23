@@ -1,5 +1,10 @@
 #pragma once
+#include <iostream>
+#include <box2d.h>
+#include <SFML/Graphics.hpp>
 
+using namespace std;
+using namespace sf;
 
 
 struct Coord_2d
@@ -14,8 +19,17 @@ enum Body_kind
     DYNAMIC,
     
 };
-enum Shapes 
+enum TypeShape
 {
-    CIRCLE,
-    RECTANGLE
+    CONVEX = 0,
+    CIRCLE = 1,
+    RECTANGLE=2,
 };
+
+/** En Box2D las coordenadas Y crecen hacia arriba y en SFML crecen hacia abajo desde el borde superior.
+   ** Esta función se encarga de convertir el sistema de coordenadas para que la escena no se vea invertida.
+   **/
+inline Vector2f box2d_position_to_sfml_position(const b2Vec2& box2d_position, float window_height)
+{
+    return Vector2f(box2d_position.x, window_height - box2d_position.y);
+}
