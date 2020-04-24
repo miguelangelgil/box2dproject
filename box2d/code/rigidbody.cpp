@@ -4,7 +4,7 @@
 using namespace sf;
 
 RigidBody::RigidBody(Scene &scene,Body_kind my_body_kind, Vector2f position, float radius,
-    float density, float friction, float rotation, int vertex):
+    float density, float friction, float rotation):
     scene(&scene)
 {
     b2BodyDef body_definition;
@@ -24,7 +24,7 @@ RigidBody::RigidBody(Scene &scene,Body_kind my_body_kind, Vector2f position, flo
 }
 
 RigidBody::RigidBody(Scene& scene, Body_kind my_body_kind, Vector2f position, Vector2f size,
-    float density, float friction, float rotation, int vertex):
+    float density, float friction, float rotation):
     scene(&scene)
 {
     b2BodyDef body_definition;
@@ -41,6 +41,26 @@ RigidBody::RigidBody(Scene& scene, Body_kind my_body_kind, Vector2f position, Ve
     body_fixture.friction = friction;
 
     my_fixture = my_body->CreateFixture(&body_fixture);
+}
+
+RigidBody::RigidBody(Scene& scene, Body_kind my_body_kind, Vector2f position,b2Vec2 * vertex, float density, float friction, size_t vertex_count):
+    scene(&scene)
+{
+    b2BodyDef body_definition;
+    body_definition.type = b2BodyType(my_body_kind);
+    body_definition.position.Set(position.x, position.y);
+    my_body = scene.get_world().CreateBody(&body_definition);
+
+    b2PolygonShape shape;
+    shape.Set(vertex, vertex_count);
+    b2FixtureDef body_fixture;
+    body_fixture.shape = &shape;
+    body_fixture.density = density;
+    body_fixture.restitution = 0.50f;
+    body_fixture.friction = friction;
+
+    my_fixture = my_body->CreateFixture(&body_fixture);
+
 }
 
 RigidBody::RigidBody(Scene& scene, RenderWindow& window, Body_kind my_body_kind, Vector2f position, float angle):

@@ -18,11 +18,15 @@ private:
 public:
     RigidBody(
         Scene& scene, Body_kind my_body_kind, Vector2f position,
-        float radius, float density, float friction, float rotation = 0.0f, int vertex = 0);
+        float radius, float density, float friction, float rotation = 0.0f);
 
     RigidBody(
         Scene& scene ,Body_kind my_body_kind, Vector2f position,
-        Vector2f size, float density,float friction, float rotation = 0.0f, int vertex = 0);
+        Vector2f size, float density,float friction, float rotation = 0.0f);
+
+    RigidBody(
+        Scene& scene, Body_kind my_body_kind, Vector2f position,
+        b2Vec2 * vertex, float density, float friction, size_t vertex_count);
     RigidBody(
         Scene& scene, RenderWindow& window,Body_kind my_body_kind, Vector2f position, float angle);
 
