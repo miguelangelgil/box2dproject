@@ -42,6 +42,13 @@ void Entity::draw()
     }
 }
 
+Mesh* Entity::get_mesh(int index)
+{
+    if (my_mesh.size() > index)
+        return my_mesh[index];
+    return nullptr;
+}
+
 RigidBody* Entity::get_body(int index)
 {
     if(my_rigidbody.size() > index)
@@ -75,25 +82,24 @@ void Entity::add_body(RigidBody& rigidbody, Mesh& mesh, Scene & scene, b2Vec2 an
     my_rigidbody.push_back(&rigidbody);
   
     b2Vec2 axis(0.f, 1.f);
-    b2WheelJointDef jointDef;
-    jointDef.Initialize(my_rigidbody.front()->get_body(), my_rigidbody.back()->get_body(), my_rigidbody.back()->get_body()->GetPosition(),axis);
+    b2RevoluteJointDef jointDef;
+    jointDef.Initialize(my_rigidbody.front()->get_body(), my_rigidbody.back()->get_body(), my_rigidbody.back()->get_body()->GetPosition());
     jointDef.localAnchorA = anchorA;
     jointDef.localAnchorB = anchorB;
-    jointDef.stiffness = 0.f;
-    jointDef.damping = 0.f;
-    jointDef.enableLimit = true;
-    jointDef.lowerTranslation = 20.f;
-    jointDef.upperTranslation = 120.f;
-    jointDef.enableMotor = true;
+   /* jointDef.stiffness = 0.f;
+    jointDef.damping = 0.f;*/
+    //jointDef.enableLimit = true;
+   /* jointDef.lowerTranslation = 20.f;
+    jointDef.upperTranslation = 120.f;*/
+    jointDef.enableMotor = false;
     jointDef.motorSpeed = 10.f;
-    jointDef.collideConnected = true;
+    jointDef.collideConnected = false;
     
 
     std::cout << "localanchorA: " << "x: " << jointDef.localAnchorA.x << " y: " << jointDef.localAnchorA.y << endl;
     std::cout << "localanchorB: " << "x: " << jointDef.localAnchorB.x << " y: " << jointDef.localAnchorB.y << endl;
 
     scene.get_world().CreateJoint(&jointDef);
-    my_rigidbody.back()->get_body()->SetTransform(my_rigidbody.back()->get_body()->GetPosition() -
-        b2Vec2(axis.x * jointDef.lowerTranslation, axis.y * jointDef.lowerTranslation),0.0f);
+   
 }
 

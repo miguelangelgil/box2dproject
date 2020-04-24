@@ -21,6 +21,7 @@ public:
     Entity(RigidBody & rigidbody, Mesh & mesh);
     void update();
     void draw();
+    Mesh* get_mesh(int index);
     RigidBody* get_body(int index);
     vector<RigidBody*> get_bodies();
     void add_body(RigidBody & rigidbody, Mesh & mesh, Scene & scene, b2Vec2 anchorA, b2Vec2 anchorB);
