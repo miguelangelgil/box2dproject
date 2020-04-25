@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\code\headers\carEntity.h" />
     <ClInclude Include="..\..\code\headers\entity.hpp" />
     <ClInclude Include="..\..\code\headers\mesh.hpp" />
     <ClInclude Include="..\..\code\headers\rigidbody.hpp" />
@@ -19,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\code\entity.cpp" />
+    <ClCompile Include="..\..\code\headers\carEntity.cpp" />
     <ClCompile Include="..\..\code\main.cpp" />
     <ClCompile Include="..\..\code\mesh.cpp" />
     <ClCompile Include="..\..\code\rigidbody.cpp" />

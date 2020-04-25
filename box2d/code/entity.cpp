@@ -72,7 +72,7 @@ vector<RigidBody*> Entity::get_bodies()
     return my_rigidbody;
 }
 
-void Entity::add_body(RigidBody& rigidbody, Mesh& mesh, Scene & scene, b2Vec2 anchorA, b2Vec2 anchorB)
+void Entity::add_engine_body(RigidBody& rigidbody, Mesh& mesh, Scene & scene, float speed, b2Vec2 anchorA, b2Vec2 anchorB)
 {
     if (rigidbody.get_fixture()->GetType() == b2Shape::e_circle)
     {
@@ -97,20 +97,13 @@ void Entity::add_body(RigidBody& rigidbody, Mesh& mesh, Scene & scene, b2Vec2 an
     jointDef.Initialize(my_rigidbody.front()->get_body(), my_rigidbody.back()->get_body(), my_rigidbody.back()->get_body()->GetPosition());
     jointDef.localAnchorA = anchorA;
     jointDef.localAnchorB = anchorB;
-   /* jointDef.stiffness = 0.f;
-    jointDef.damping = 0.f;*/
-    //jointDef.enableLimit = true;
-   /* jointDef.lowerTranslation = 20.f;
-    jointDef.upperTranslation = 120.f;*/
-    jointDef.enableMotor = false;
-    jointDef.motorSpeed = 10.f;
+    jointDef.enableMotor = true;
+    jointDef.motorSpeed = speed;
+    jointDef.maxMotorTorque = 10000;
     jointDef.collideConnected = false;
-    
-
-    std::cout << "localanchorA: " << "x: " << jointDef.localAnchorA.x << " y: " << jointDef.localAnchorA.y << endl;
-    std::cout << "localanchorB: " << "x: " << jointDef.localAnchorB.x << " y: " << jointDef.localAnchorB.y << endl;
 
     scene.get_world().CreateJoint(&jointDef);
+    
    
 }
 

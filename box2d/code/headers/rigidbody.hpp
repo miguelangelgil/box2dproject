@@ -28,6 +28,9 @@ public:
         Scene& scene, Body_kind my_body_kind, Vector2f position,
         b2Vec2 * vertex, float density, float friction, size_t vertex_count);
     RigidBody(
+        Scene& scene, Body_kind my_body_kind, Vector2f position,
+        b2Vec2* vertex, size_t vertex_count, float density, float friction);
+    RigidBody(
         Scene& scene, RenderWindow& window,Body_kind my_body_kind, Vector2f position, float angle);
 
     ~RigidBody() = default;
