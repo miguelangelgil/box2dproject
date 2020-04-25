@@ -18,6 +18,17 @@ Entity::Entity(RigidBody& rigidbody, Mesh& mesh)
         }
         mesh.set_shape_convex(rigidbody.get_body()->GetTransform() ,vertex);
     }
+    else if (rigidbody.get_fixture()->GetType() == b2Shape::e_chain) 
+    {
+        b2ChainShape* box2d_chain = dynamic_cast<b2ChainShape*>(rigidbody.get_fixture()->GetShape());
+        vector<b2Vec2>vertex;
+        for (size_t index = 0; index < box2d_chain->m_count; index++) 
+        {
+            vertex.push_back(box2d_chain->m_vertices[index]);
+        }
+        mesh.set_chain(rigidbody.get_body()->GetTransform(), vertex);
+
+    }
     my_mesh.push_back(&mesh);
     my_rigidbody.push_back(&rigidbody);
 }

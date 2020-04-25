@@ -38,7 +38,7 @@ int main()
     
     //my_view.setCenter(400,300);
     Scene my_scene(b2Vec2(0.f,-9.8f));
-    b2Vec2 ground1_vertex[10] =
+    b2Vec2 ground1_vertex[] =
     {
         {0,0},      //1
         {0,13},     //2
@@ -48,33 +48,47 @@ int main()
         {16,7},      //6
         {19,5},      //7
         {24,4},      //8
-        {11,4},      //9
-        {40,2}
+        {30,3},      //9
+        {40,3.5},
+        {53.5,6.3},
+        {53.5,0}
 
     };
-    RigidBody rigidground(my_scene,Body_kind::STATIC,Vector2f(0.f,0.f), ground1_vertex,200.f,0.3f, 10);
+    b2Vec2 ground2_vertex[] =
+    {
+        {75, 0},
+        {75, 3},
+        {121,5.4},
+        {121,0}
+
+    };
+    RigidBody rigidground1(my_scene,Body_kind::STATIC,Vector2f(0.f,0.f), ground1_vertex,200.f,0.3f, 12);
+    RigidBody rigidground2(my_scene,Body_kind::STATIC,Vector2f(0.f,0.f), ground2_vertex,200.f,0.3f, 4);
+    
     
 
-  /*  RigidBody rigidbodybox(my_scene, Body_kind::DYNAMIC, Vector2f(2.f, 4.f), Vector2f(4.f, 1.5f), 1.f, 0.3f);
-    RigidBody rueda1(my_scene, Body_kind::DYNAMIC, Vector2f(2.f, 2.f), 1.5f, 1.f, 0.6f);
-    RigidBody rueda2(my_scene, Body_kind::DYNAMIC, Vector2f(2.f, 2.f), 1.5f, 1.f, 0.6f);*/
+    RigidBody carBody(my_scene, Body_kind::DYNAMIC, Vector2f(2.f, 4.f), Vector2f(4.f, 1.5f), 1.f, 0.3f);
+    RigidBody wheel1(my_scene, Body_kind::DYNAMIC, Vector2f(2.f, 2.f), 1.5f, 1.f, 0.6f);
+    RigidBody wheel2(my_scene, Body_kind::DYNAMIC, Vector2f(2.f, 2.f), 1.5f, 1.f, 0.6f);
 
    
 
     Mesh ground_mesh(window, Color::Red);
-   /* Mesh box_mesh(window ,Color::Green);
-    Mesh ruedas1_mesh(window, Color::Cyan);
-    Mesh ruedas2_mesh(window, Color::Cyan);*/
+    Mesh car_mesh(window ,Color::Green);
+    Mesh wheel1_mesh(window, Color::Cyan);
+    Mesh wheel2_mesh(window, Color::Cyan);
 
    
-    Entity my_ground(rigidground, ground_mesh);
-  /*  Entity my_box(rigidbodybox, box_mesh);
-    my_box.add_body(rueda1, ruedas1_mesh, my_scene, b2Vec2(-1.8f,-1.f), b2Vec2(0.f, 0.f));
-    my_box.add_body(rueda2, ruedas2_mesh, my_scene, b2Vec2(1.8f, -1.f), b2Vec2(0.f, 0.f));*/
+    Entity my_ground1(rigidground1, ground_mesh);
+    Entity my_ground2(rigidground2, ground_mesh);
+    Entity my_car(carBody, car_mesh);
+    my_car.add_body(wheel1, wheel1_mesh, my_scene, b2Vec2(-1.8f,-1.f), b2Vec2(0.f, 0.f));
+    my_car.add_body(wheel2, wheel2_mesh, my_scene, b2Vec2(1.8f, -1.f), b2Vec2(0.f, 0.f));
 
    
-   /* my_scene.add_entity(my_box);*/
-    my_scene.add_entity(my_ground);
+    my_scene.add_entity(my_car);
+    my_scene.add_entity(my_ground1);
+    my_scene.add_entity(my_ground2);
   
     Clock timer;
     float delta_time = 0.010f;

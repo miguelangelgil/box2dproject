@@ -36,6 +36,37 @@ void Mesh::set_shape_convex(b2Transform body_transform, vector<b2Vec2> vertex)
 
 }
 
+void Mesh::set_chain(b2Transform body_transform, vector<b2Vec2> vertex)
+{
+    line = max_vertex;
+    vertex_count = (vertex.size()-2)*2 +2;
+    size_t count = 0;
+    for(size_t index=0; index < vertex.size();index++)
+    {
+        if (index == 0) 
+        {
+            line[count] = Vertex(box2d_position_to_sfml_position(b2Mul(body_transform, vertex[index]), (float)window->getSize().y), color);
+            count++;
+        }
+        else if(index < vertex.size()-1)
+        {
+            line[count] = Vertex(box2d_position_to_sfml_position(b2Mul(body_transform, vertex[index]), (float)window->getSize().y), color);
+            count++;
+            line[count] = Vertex(box2d_position_to_sfml_position(b2Mul(body_transform, vertex[index]), (float)window->getSize().y), color);
+            count++;
+            
+        }
+        else 
+        {
+            line[count] = Vertex(box2d_position_to_sfml_position(b2Mul(body_transform, vertex[index]), (float)window->getSize().y), color);
+            count++;
+
+        }
+            
+    } 
+    type = TypeShape::CHAIN;
+}
+
 void Mesh::set_relative_position(Vector2f position)
 {
     relative_position = position;
@@ -85,6 +116,9 @@ void Mesh::draw_mesh()
         break;
     case CIRCLE:
         window->draw(circle_shape);
+        break;
+    case CHAIN:
+        window->draw(line, vertex_count, Lines);
         break;
     default:
         break;

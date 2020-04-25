@@ -51,8 +51,8 @@ RigidBody::RigidBody(Scene& scene, Body_kind my_body_kind, Vector2f position,b2V
     body_definition.position.Set(position.x, position.y);
     my_body = scene.get_world().CreateBody(&body_definition);
 
-    b2PolygonShape shape;
-    shape.Set(vertex, vertex_count);
+    b2ChainShape shape;
+    shape.CreateChain(vertex, vertex_count);
     b2FixtureDef body_fixture;
     body_fixture.shape = &shape;
     body_fixture.density = density;

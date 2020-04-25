@@ -23,7 +23,8 @@ enum TypeShape
 {
     CONVEX = 0,
     CIRCLE = 1,
-    RECTANGLE=2,
+    CHAIN = 2,
+    RECTANGLE=3,
 };
 
 /** En Box2D las coordenadas Y crecen hacia arriba y en SFML crecen hacia abajo desde el borde superior.

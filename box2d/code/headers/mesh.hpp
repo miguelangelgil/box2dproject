@@ -14,6 +14,9 @@ private:
     Vector2f relative_position;
     ConvexShape convex_shape;
     CircleShape circle_shape;
+    Vertex *line;
+    size_t vertex_count;
+    Vertex max_vertex[100];
     RenderWindow* window;
     TypeShape type;
     vector<b2Vec2> vertex;
@@ -22,6 +25,7 @@ public:
     Mesh(RenderWindow& window ,Color color);
     void set_shape_circle(b2Vec2 center,b2Transform body_transform, float radius);
     void set_shape_convex(b2Transform body_transform, vector<b2Vec2> vertex);
+    void set_chain(b2Transform body_transform, vector<b2Vec2> vertex);
     void set_relative_position(Vector2f position);
     Vector2f get_relative_position();
     void set_color(const Color& color);
