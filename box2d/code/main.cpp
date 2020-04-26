@@ -7,7 +7,7 @@
 #include "headers/mesh.hpp"
 #include "headers/scene.hpp"
 #include "headers/entity.hpp"
-#include "headers/carEntity.h"
+#include "headers/carEntity.hpp"
 #include <iostream>
 #include <box2d.h>
 
@@ -77,7 +77,7 @@ int main()
     /**
     Se crea el cuerpo del coche y sus partes
     */
-    RigidBody carBody(my_scene, Body_kind::DYNAMIC, Vector2f(3.f, 17.f), Vector2f(4.f, 1.5f), 3.f, 0.3f);
+    RigidBody carBody(my_scene, Body_kind::DYNAMIC, Vector2f(3.f, 17.f), Vector2f(4.f, 1.5f), 10.f, 0.3f);
     RigidBody wheel1(my_scene, Body_kind::DYNAMIC, Vector2f(2.f, 15.f), 1.5f, 1.f, 1.f);
     RigidBody wheel2(my_scene, Body_kind::DYNAMIC, Vector2f(2.f, 15.f), 1.5f, 1.f, 1.f);
     RigidBody trunk1(my_scene, Body_kind::DYNAMIC, Vector2f(2.f, 18.f), Vector2f(4.f, 0.3f), 1.f, 0.3f);

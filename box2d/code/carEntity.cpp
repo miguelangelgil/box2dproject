@@ -1,4 +1,4 @@
-#include "carEntity.h"
+#include "headers/carEntity.hpp"
 
 CarEntity::CarEntity(float speed, float speed_up, float speed_trunk, RigidBody& rigidBody, Mesh& mesh) : Entity(rigidBody, mesh),
     speed(speed),

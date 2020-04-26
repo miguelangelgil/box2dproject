@@ -30,7 +30,7 @@
     <ClInclude Include="..\..\code\headers\values.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\code\headers\carEntity.h">
+    <ClInclude Include="..\..\code\headers\carEntity.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -50,7 +50,7 @@
     <ClCompile Include="..\..\code\rigidbody.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\code\headers\carEntity.cpp">
+    <ClCompile Include="..\..\code\carEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,0 +1,5 @@
+flecha derecha: avanza hacia la derecha
+flecha izquierda: avanza hacia la izquierda
+flecha arriba: el remolque descarga
+flecha abajo: el remorque restablece su posicion
+espacio: freno de mano
