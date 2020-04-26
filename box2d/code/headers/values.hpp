@@ -12,6 +12,9 @@ struct Coord_2d
     float x = 0;
     float y = 0;
 };
+/**
+Enumeracion que indica el tipo de cuerpo que es un rigidbody
+*/
 enum Body_kind
 {
     STATIC,
@@ -19,6 +22,9 @@ enum Body_kind
     DYNAMIC,
     
 };
+/**
+Enumeracion que indica el tipo de figura de sfml es
+*/
 enum TypeShape
 {
     CONVEX = 0,

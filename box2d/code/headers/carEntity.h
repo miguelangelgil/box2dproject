@@ -7,7 +7,20 @@ private :
     float current_speed;
     float speed;
     float speed_up;
+    float speed_trunk;
 public:
-    CarEntity(float speed, float speed_up, RigidBody& rigidBody, Mesh& mesh);
+    /**
+    Constructor de clase
+    recive: 
+    velocidad del motor
+    aceleracion
+    velocidad del remolque
+    un rigidbody inicial
+    mesh inicial
+    */
+    CarEntity(float speed, float speed_up,float speed_trunk, RigidBody& rigidBody, Mesh& mesh);
+    /**
+    Gestiona los inputs que controlan el coche
+    */
     void update(float delta_Time);
 };

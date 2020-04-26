@@ -22,15 +22,43 @@ private:
     vector<Entity *> my_entities;
     unique_ptr< b2World > physics_world;
 public:
-
+    /**
+    Constructor de escena vacia
+    */
     Scene();
+    /**
+    Constructor de escena con una entidad
+    */
     Scene(Entity &entity);
+    /**
+    Constructor de escena inicializando valores de gravedad
+    de mundo de box2d
+    */
     Scene(b2Vec2 gravity);
+    /**
+    Constructor de escena con una entidad inicial e inicializando
+    valores de gravedad de box2d
+    */
     Scene(Entity &entity, b2Vec2 gravity);
+    /**
+    Destructor de scene
+    */
     ~Scene();
+    /**
+    Clase encargada de actualizar todas las entities que tenga
+    */
     void update();
+    /**
+    Clase encargada de dibujar todas la entiadades que tenga
+    */
     void draw();
+    /**
+    Añade una entidad a la escena
+    */
     void add_entity(Entity & entity);
+    /**
+    Retorna una referencia del mundo de box2d
+    */
     b2World& get_world() 
     {
         return *physics_world;

@@ -107,3 +107,33 @@ void Entity::add_engine_body(RigidBody& rigidbody, Mesh& mesh, Scene & scene, fl
    
 }
 
+void Entity::add_fixed_body(RigidBody& rigidbody, Mesh& mesh, Scene& scene, RigidBody& bodyA,b2Vec2 anchorA, b2Vec2 anchorB)
+{
+    if (rigidbody.get_fixture()->GetType() == b2Shape::e_circle)
+    {
+        b2CircleShape* circle = dynamic_cast<b2CircleShape*>(rigidbody.get_fixture()->GetShape());
+        mesh.set_shape_circle(circle->m_p, rigidbody.get_body()->GetTransform(), circle->m_radius);
+    }
+    else if (rigidbody.get_fixture()->GetType() == b2Shape::e_polygon)
+    {
+        b2PolygonShape* box2d_polygon = dynamic_cast<b2PolygonShape*>(rigidbody.get_fixture()->GetShape());
+        vector<b2Vec2>vertex;
+        for (size_t index = 0; index < box2d_polygon->m_count; index++)
+        {
+            vertex.push_back(box2d_polygon->m_vertices[index]);
+        }
+        mesh.set_shape_convex(rigidbody.get_body()->GetTransform(), vertex);
+    }
+    my_mesh.push_back(&mesh);
+    my_rigidbody.push_back(&rigidbody);
+
+    b2WeldJointDef jointDef;
+    jointDef.Initialize(bodyA.get_body(), my_rigidbody.back()->get_body(), my_rigidbody.back()->get_body()->GetPosition());
+    jointDef.localAnchorA = anchorA;
+    jointDef.localAnchorB = anchorB;
+    jointDef.collideConnected = false;
+
+    scene.get_world().CreateJoint(&jointDef);
+
+}
+

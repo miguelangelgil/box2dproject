@@ -22,15 +22,45 @@ private:
     vector<b2Vec2> vertex;
 
 public:
+    /**
+    Constructor de clase
+    */
     Mesh(RenderWindow& window ,Color color);
+    /**
+    Crea un circulo
+    */
     void set_shape_circle(b2Vec2 center,b2Transform body_transform, float radius);
+    /**
+    Crea una figura geometrica de maximo 8 vertices
+    */
     void set_shape_convex(b2Transform body_transform, vector<b2Vec2> vertex);
+    /**
+    Crea una cadena de nodos infinitos
+    */
     void set_chain(b2Transform body_transform, vector<b2Vec2> vertex);
+    /**
+    Modifica la posicion relativa
+    */
     void set_relative_position(Vector2f position);
+    /**
+    Retorna la posicion relativa
+    */
     Vector2f get_relative_position();
+    /**
+    Asigna un color a la figura
+    */
     void set_color(const Color& color);
+    /**
+    Retorna el color de la figura
+    */
     Color get_color();
+    /**
+    Actualiza la posicion de la forma respecto a una posicion, la posicion de un cuerpo
+    */
     void update_mesh(b2Transform transform_body);
+    /**
+    dibuja por pantalla las formas
+    */
     void draw_mesh();
 
 };
